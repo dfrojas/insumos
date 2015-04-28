@@ -1,0 +1,43 @@
+{% extends './base.html' %}
+
+{% block js %}
+
+<script> 
+  $(function () {
+        $("#myTab a:contains('Manejo general de la finca')").parent().addClass('active');        
+     });
+
+$(document).ready(function() {
+  $('#form').ajaxForm(function() {
+    alert("Formulario guardado exitosamente");
+    $("#form").remove();
+  }); 
+});
+
+  
+</script>
+{% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="">Manejo general y potreros </a></li>
+  <li role="presentation"><a href="/manejo-finca/enfermedades/">Enfermedades y problemas sanitarios </a></li>
+</ul>
+
+</br>
+
+
+<div class="row">
+  
+  <div class="col-md-6">
+  <form action="." method="POST" id="form">{% csrf_token %}
+    {{form.as_p}}
+    <p><input type="submit" value="Guardar"></p>
+  </form>
+  </div>
+  
+
+</div>
+
+{% endblock %}

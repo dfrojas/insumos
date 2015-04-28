@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block js %}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var table = $('#tabla').DataTable( {
+        responsive: true,
+        paging: false
+    } );
+ 
+    new $.fn.dataTable.FixedHeader( table );
+   } );
+ </script> 
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+<div class="table-responsive">
+<table class="table table-bordered" id="tabla">
+    <thead>
+    <tr>
+    	<th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Cedula</th>
+        <th>Predio</th>   
+        <th>Editar</th>    
+    </tr>
+    </thead>
+    <tbody>
+        {% for p in object_list %}
+        <tr>
+            <th scope="row">{{ p.pk }}</th>
+            <td>{{p.primer_nombre}}</td>
+            <td>{{p.primer_apellido}}</td>
+            <td>{{p.numero_identificacion}}</td>
+            <td>{{p.predio}}</td>
+
+            {% if user.is_authenticated and user.is_staff %}
+<td><div align="center"><a class="btn" href="/update/predio-general/{{p.predio_id}}/"><i class="icon-pencil"></i>  Editar </a></div></td>
+            <!--<td><a href="#myModal" role="button" class="btn btn-danger delete" data-toggle="modal" id="{{p.id}}" data-name="{{p.nombre}}"><i class="icon-trash icon-white"></i>Eliminar</a></td>-->
+            {% endif %} 
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+</div>
+
+
+
+
+
+ 
+{% endblock %}

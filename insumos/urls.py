@@ -11,6 +11,15 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^',include('setup.urls')),
+    url(r'^',include('productores.urls')),
+    url(r'^',include('predio.urls')),
+    url(r'^',include('fuentes_agua.urls')),
+    url(r'^',include('usos_suelo.urls')),
+    url(r'^',include('manejo_finca.urls')),
+    url(r'^',include('hato.urls')),
+    url(r'^',include('lacteos.urls')),
+    url(r'^',include('agroecoturismo.urls')),
+    url(r'^',include('enfoque_diferencial.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 

@@ -34,7 +34,7 @@ class Corregimiento(models.Model):
 
 class Vereda(models.Model):
 	corregimiento = models.ForeignKey(Corregimiento)
-	predio  = models.ForeignKey(Predio,related_name='predio')
+	predio  = models.ForeignKey(InfoPredioGeneral,related_name='predio')
 	nombre = models.CharField(max_length=100)
 	codigo_vereda = models.CharField(max_length=100)
 

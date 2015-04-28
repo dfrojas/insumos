@@ -1,0 +1,42 @@
+{% extends './base.html' %}
+
+{% block js %}
+
+<script> 
+  $(function () {
+        $("#myTab a:contains('Venta de lácteos y costos')").parent().addClass('active');        
+     });
+
+$(document).ready(function() {
+  $('#form').ajaxForm(function() {
+    alert("Formulario guardado exitosamente");
+    $("#form").remove();
+  }); 
+});
+
+  
+</script>
+{% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="#">Venta de lácteos </a></li>
+  <li role="presentation" class="active"><a href="#">Costos de producción </a></li>
+</ul>
+
+</br>
+
+<form action="." method="POST" id="form">{% csrf_token %}
+{{form.as_p}}
+<p><input type="submit" value="Guardar"></p>
+</form>
+
+<nav>
+  <ul class="pager">
+    <!--<li class="previous"><a href="/hato/hembras"><span aria-hidden="true">&larr;</span> Hembras</a></li>-->
+    <li class="next"><a href="/lacteos/insumos">Insumos <span aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+</nav>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends './base.html' %}
+
+{% block js %}
+
+<script> 
+  $(function () {
+        $("#myTab a:contains('Usos del suelo')").parent().addClass('active');        
+     });
+</script>
+<script>
+$(document).ready(function() {
+  $('#formcultivos').ajaxForm(function() {
+    alert("Formulario guardado exitosamente");
+    $("#formcultivos").remove();
+  }); 
+
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/usossuelo/pastoreo/">Actividades Pecuarias </a></li>
+  <li role="presentation" class="active"><a href="/usossuelo/cultivos/">Actividades agricolas y forestales </a></li>
+  <!--<li role="presentation"><a href="/usossuelo/conservacion-natural/">Bosques, areas de conservacion y sistemas agroforestales </a></li>-->
+</ul>
+
+</br>
+
+  <form action="." method="POST" id="formcultivos">{% csrf_token %}
+    {{form.as_p}}
+    <p><input type="submit" value="Guardar"></p>
+  </form>
+
+<nav>
+  <ul class="pager">
+    <!--<li class="previous"><a href="/hato/hembras"><span aria-hidden="true">&larr;</span> Hembras</a></li>-->
+    <li class="next"><a href="/usossuelo/cultivos-agroforestales/">Cultivos agroforestales <span aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+</nav>  
+
+
+{% endblock %}

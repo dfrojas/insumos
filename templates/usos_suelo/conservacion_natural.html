@@ -1,0 +1,102 @@
+{% extends './base.html' %}
+
+{% block title %} Informacion propietarios {% endblock %}
+
+{% block js%}
+
+<script> 
+$(document).ready(function() {
+  $('#form').ajaxForm(function() {
+    alert("Formulario guardado exitosamente");
+    $("#form").remove();
+  }); 
+});
+</script> 
+
+<script> 
+$(document).ready(function() {
+  $('#formforraje').ajaxForm(function() {
+    alert("Formulario guardado exitosamente");
+    $("#formforraje").remove();
+  }); 
+});
+</script> 
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container"  id="formulario1">
+  <h3 style="margin-left:30px"><i class="icon-th-large icon-black"></i>Información organizacional del predio</h3>
+  <ul class="nav nav-pills nav-stacked">
+
+    <li class="span3"><a href="/informacionpredio/infogeneral/">Información del predio<i class="icon-chevron-right" id="icono1"></i></a>
+    </li>
+
+    <li class="span3">
+      <a href="/productor/propietario/">Opciones de administración<i class="icon-chevron-right" id="icono1"></i></a>
+    </li>
+           
+    <li class="span3"><a href="/fuentesagua/nacimientos">Fuentes de agua y conservación<i class="icon-chevron-right" id="icono1"></i></a></li>
+           
+    <li class="active span3"><a href="/usossuelo/pastoreo/">Usos del suelo<i class="icon-chevron-right" id="icono1"></i></a></li>
+           
+    <li class="span3"><a href="#parte5" data-toggle="tab">Indicadores económicos del Hato<i class="icon-chevron-right" id="icono1"></i></a></li>
+           
+    <li class="span3"><a href="#parte6" data-toggle="tab">Venta de lácteos y costos<i class="icon-chevron-right" id="icono1"></i></a></li>
+           
+    <li class="span3"><a href="#parte7" data-toggle="tab">Manejo general de la finca<i class="icon-chevron-right" id="icono1"></i></a></li>
+           
+    <li class="span3"><a href="#parte8" data-toggle="tab">Agroecoturismo<i class="icon-chevron-right" id="icono1"></i></a></li>
+           
+    <li class="span3"><a href="#parte9" data-toggle="tab">Enfoque diferencial<i class="icon-chevron-right" id="icono1"></i></a></li>
+  </ul>
+</div>
+
+
+<div id="info1" class="navbar">     
+  <div class="navbar-inner">
+    <a href="#" class="brand"></a>
+    <ul class="nav pull-right">
+      <li><a href="#"><i class="icon-folder-open"></i>Nuevo</a></li>    
+      <li><a href="#"><i class="icon-edit"></i>Editar</a></li>    
+      <li><a href="#"><i class="icon-lock"></i>Guardar</a></li>
+      <li><a href="#"><i class="icon-arrow-left"></i>Volver</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="tabbable" id="info3">
+  <div class="tab-content">              
+    <div class="tab-pane active" id="parte1">
+      <ul class="nav nav-tabs" id="tabs">
+      <li><a href="/usossuelo/pastoreo/">Actividades Pecuarias </a></li>
+      <li><a href="/usossuelo/cultivos-agricolas/">Actividades agrícolas y forestales</a></li>
+      <li class="active"><a href="/usossuelo/conservacion-natural/">Bosques, áreas de conservación y sistemas agroforestales </a></li>
+      </ul>
+
+<div class="tab-content">
+<div class="tab-pane active" id="propietario">
+<div class="row-fluid">        
+
+<form action="." method="POST" id="form">{% csrf_token %}
+{{formconservacion.as_p}}
+<p><input type="submit" value="Guardar"></p>
+</form>
+
+<form action="." method="POST" id="form">{% csrf_token %}
+{{formforestales.as_p}}
+<p><input type="submit" value="Guardar"></p>
+</form>
+
+</div>
+</div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

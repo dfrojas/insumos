@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<script src="http://malsup.github.com/jquery.form.js"></script> 
+<script>  
+$(function () {
+$("#predio").attr("href", "/update/predio-general/{{object.predio_id}}");
+$("#admon").attr("href", "/update/propietario/{{object.predio_id}}");
+$("#agua").attr("href", "/update/nacimientos-agua/{{object.predio_id}}");
+$("#suelos").attr("href", "/update/pastoreo/{{object.predio_id}}");
+$("#hato").attr("href", "/update/hato/hembras/{{object.predio_id}}/1");
+$("#lacteos").attr("href", "/update/lacteos/produccion-leche/{{object.predio_id}}");
+$("#finca").attr("href", "/update/manejo-finca/general-y-potreros/{{object.predio_id}}");
+$("#agro").attr("href", "/update/agroecoturismo/{{object.predio_id}}");
+$("#enfoq").attr("href", "/update/enfoque-diferencial/{{object.predio_id}}");
+     });
+</script>
+{% block js %}{% endblock %}
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <img alt="Brand" src="http://imageshack.com/a/img538/8439/N3lBTg.png" width="50px">
+    <p class="navbar-text navbar-right">{{user.username}}</a></p>
+    <p class="navbar-text navbar-right"><a href="/edit">Editar</a></p>
+    <p class="navbar-text navbar-right"><a href="/reportes/1">Reportes</a></p>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+
+
+<div class="row">
+
+  <div class="col-md-4">
+    
+<ul class="nav nav-pills nav-stacked" id="myTab">
+<li role="presentation"><a id="predio" href="/informacionpredio/infogeneral/">Informacion del Predio</a></li>
+<li role="presentation"><a id="admon" href="/productor/propietario/">Opciones de Administracion</a></li>
+<li role="presentation"><a id="agua" href="/fuentesagua/nacimientos/">Fuentes de agua y conservacion</a></li>
+<li role="presentation"><a id="suelos" href="/usossuelo/pastoreo/">Usos del suelo</a></li>
+<li role="presentation"><a id="hato" href="/hato/hembras/">Indicadores económicos del Hato</a></li>
+<li role="presentation"><a id="lacteos" href="/lacteos/produccion-leche">Venta de lácteos y costos</a></li>
+<li role="presentation"><a id="finca" href="/manejo-finca/manejo-general/">Manejo general de la finca</a></li>
+<li role="presentation"><a id="agro" href="/agroecoturismo">Agroecoturismo</a></li>
+<li role="presentation"><a id="enfoq" href="/enfoque_diferencial">Enfoque diferencial</a></li>
+</ul>
+
+  </div><!--col md-4-->
+  
+<div class="col-md-8">
+    
+<div class="panel panel-default">
+  <div class="panel-body">
+
+  {% block pestanas %}{% endblock %}
+  {% block content %} {% endblock %}
+
+
+  </div><!--panel body-->
+</div><!--panel default-->
+
+  </div><!--cierra segunda md-6-->
+
+</div><!--row-->
+
+
+
+</div><!--fluid-->
+
+</body>
+</html>
+
+
+
+

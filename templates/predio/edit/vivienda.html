@@ -1,0 +1,38 @@
+{% extends './base-edit.html' %}
+
+{% block title %} Editar vivienda {% endblock %}
+
+{% block js %}
+
+<script> 
+  $(function () {
+$("#myTab a:contains('Informacion del Predio')").parent().addClass('active');        
+     
+});
+
+$(document).ready(function() {
+  $('#form').ajaxForm(function() {
+    alert("Formulario EDITADO exitosamente");
+    $("#form").remove();
+  }); 
+});
+
+  
+</script>
+{% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/update/predio-general/{{object.predio_id}}">Informacion general y Juridica</a></li>
+  <li role="presentation"><a href="/update/predio-credito/{{object.predio_id}}">Credito</a></li>
+  <li role="presentation" class="active"><a href="#">Vivienda estructura y servicios básicos</a></li>
+</ul>
+
+</br>
+
+<form action="." method="POST" id="form">{% csrf_token %}
+{{form.as_p}}
+<p><input type="submit" value="Guardar"></p>
+</form>
+{% endblock %}

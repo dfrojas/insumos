@@ -26,6 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DJANGO_SETTINGS_MODULE = True
 
 # Application definition
 
@@ -36,11 +37,19 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'opciones',
     'predio',
     'productores',
-    'ubicaciones',
+    'fuentes_agua',
+    'usos_suelo',
+    'hato',
+    'lacteos',
+    'manejo_finca',
+    'agroecoturismo',
+    'enfoque_diferencial',
     'setup',
-    #'cultivo',
+    'dajaxice',
+    'dajax',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -107,8 +116,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
 STATICFILES_DIRS = ( 
-      '/Users/diegorojas/Documents/Desarrollo/insumos/insumos/static',  
+    os.path.join(BASE_DIR, "static"),
+      #'/Users/diegorojas/Documents/Desarrollo/insumos/insumos/static',  
 )
 
-STATIC_URL = '/static/'
+

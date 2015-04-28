@@ -1,0 +1,38 @@
+{% extends './base-edit.html' %}
+
+{% block title %} Hola {% endblock %}
+
+{% block js %}
+
+<script> 
+  $(function () {
+$("#myTab a:contains('Informacion del Predio')").parent().addClass('active');
+     
+});
+
+$(document).ready(function() {
+  $('#form').ajaxForm(function() {
+    alert("Formulario guardado exitosamente");
+    $("#form").remove();
+  }); 
+});
+
+  
+</script>
+{% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Informacion general y Juridica</a></li>
+  <li role="presentation"><a href="/update/predio-credito/{{object.pk}}">Credito</a></li>
+  <li role="presentation"><a href="/update/predio-vivienda/{{object.pk}}">Vivienda estructura y servicios básicos</a></li>
+</ul>
+
+</br>
+
+<form action="." method="POST" id="form">{% csrf_token %}
+{{form.as_p}}
+<p><input type="submit" value="Guardar"></p>
+</form>
+{% endblock %}

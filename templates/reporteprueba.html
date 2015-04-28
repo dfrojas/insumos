@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reportes</title>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var table = $('#tabla').DataTable( {
+        responsive: true,
+        paging: false
+    } );
+ 
+    new $.fn.dataTable.FixedHeader( table );
+   } );
+ </script> 
+
+
+</head>
+<body>
+	
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#Barra_Navegacion">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <li><a href="#" class="navbar-brand">PrediApp </a><img src="http://imageshack.com/a/img538/8439/N3lBTg.png" style="width: 40px;height: 40px; margin-top:3px; margin-left:-10px"></li>
+      
+    </div>
+    
+    <div class="collapse navbar-collapse" id="Barra_Navegacion"><!-- colapsable -->
+      <ul class="nav navbar-nav"> <!-- Navbar left -->
+        <li><a href="#"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span>Usuario <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Agregar usuario</a></li>
+            <li><a href="#">Consultar usuario</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-map-marker"></span>Predios <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Consulta de predio</a></li>
+            <li><a href="#">Ingresar predio</a></li>
+            <li><a href="#">Eliminar predio</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-list-alt"></span> Reportes y estadisticas <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Reporte</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-retweet"></span> Mantenimiento <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Mantenimiento</a></li>
+          </ul>
+        </li>
+      </ul> <!-- Fin Navbar left -->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">{{user.username}}</a></li>
+      </ul>
+      <legend style="background-color:red; height:3px; max-width:100%; margin:0px 0px 0px -1px"></legend>
+
+    </div><!-- Fin colapsable -->
+    
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+
+<div class="row">
+  <div class="col-md-3" style="margin-right:0px">
+  	
+<div class="panel panel-default">
+  <div class="panel-heading">Reportes</div>
+  <div class="panel-body">
+    
+<form action="." method="POST">
+{% for predio in predios %}
+<p><a href="/reportes/{{object.id}}">{{object.nombre_predio}}</a></p>
+{% endfor %}
+</form>
+  
+
+
+  </div>
+</div>
+  </div><!--col-md-3-->
+  
+  <div class="col-md-9">
+  	
+
+<div class="panel panel-default">
+  <div class="panel-body"> <!-- Panel -->
+
+
+
+
+<div class="col-md-12" style="border:1px solid #DCDCDC; border-radius:5px"> <!-- md-12 encabezado -->
+    <div class="col-md-1" align="center">
+      <img src="img/escudo_arauca_mini.png" style="height:70px;width:60px;margin:5px 0px 5px 0px">
+    </div>
+    <div class="col-md-5">
+      <h6 class="text-left" style="margin-top:5px"><strong>REPUBLICA DE COLOMBIA</strong><br>DEPARTAMENTO DE ARAUCA <br> MUNICIPIO DE ARAUCA <br> SAGMA <br>Secretaria de Agricultura, Ganaderia y Medio Ambiente</h6>
+    </div>
+    <div class="col-md-2">
+      
+    </div>
+    <div class="col-md-2">
+    <h6 class="text-right"><strong><br><br><br>Pag.</strong>1 de 1</h6>
+    </div>
+    <div class="col-md-2" style="border-left:1px solid #DCDCDC">
+      <h6 class="text-center"><b><br>FECHA DE REGISTRO:</b></h6>
+      <h6 class="text-center">05/09/2014</h6>
+    </div>
+</div> <!-- fin md-12 encabezado -->
+
+<div class="col-md-12" style="padding-left:0px"> <!-- md-12 -->
+    <h6 class="text-right"><strong>Fecha de impresion:</strong> 05/09/2014</h6>
+    <h3 class="text-center"><b>FICHA TECNICA DE PREDIOS</b></h3>
+    <legend></legend>
+    <div class="col-md-8">
+      <h6>Nombre del predio:</h6>
+    </div>
+    <div class="col-md-4">
+      <h6>Coordenadas</h6>
+    </div>
+  </div> <!-- fin md-12 -->
+  <div class="col-md-12" style="border:1px solid #DCDCDC; border-radius:5px;padding-left:0px">
+    <div class="col-md-8"><h3 style="margin-top:7px"><b>LA CALEÑITA</b></h3></div>
+    <div class="col-md-4" style="border-left: 1px solid #DCDCDC">
+      <h6><b>Coordenada(N): </b> 13,45<br><b>Coordenada(W): </b> 0,701</h6>
+    </div>
+  </div>
+  <div class="col-md-6" style="padding-left:0px;margin-bottom:10px"> <!-- md-6 -->
+    <h4><b>LOCALIZACION</b></h4>
+    <div class="col-md-12" style="border:1px solid #DCDCDC; border-radius:5px;border-bottom:none;padding-left:0px">
+      <div class="col-md-4">Descripcion</div>
+      <div class="col-md-8">Informacion</div>
+    </div>
+    <div class="col-md-12" style="border:1px solid #DCDCDC; border-radius:5px;padding-left:0px">
+      <div class="col-md-4">
+        <h6><b>Municipio:</b></h6>
+        <h6><b>Corregimiento:</b></h6>
+        <h6><b>Vereda:</b></h6>
+        <h6><b>Zona:</b></h6>
+      </div>
+      <div class="col-md-8">
+        <h6>Arauca</h6>
+        <h6>Todos los santos</h6>
+        <h6>El Socorro</h6>
+        <h6>Rural</h6>
+      </div>
+    </div>
+</div> <!-- Fin md-6 -->
+
+<div class="col-md-6" style="padding-right:0px;margin-bottom:10px"> <!-- md-6 -->
+    <h4><b>OPCIONES DE ADMINISTRACION</b></h4>
+    <div class="col-md-12" style="border:1px solid #DCDCDC; border-radius:5px;border-bottom:none;padding-left:0px">
+      <div class="col-md-6">Descripcion</div>
+      <div class="col-md-6">Informacion</div>
+    </div>
+    <div class="col-md-12" style="border:1px solid #DCDCDC; border-radius:5px;padding-left:0px">
+      <div class="col-md-6">
+        <h6><b>Opciones de administracion:</b></h6>
+        <h6><b>Propietario:</b></h6>
+        <h6><b>Administrador:</b></h6>
+        <h6><b>Encargado:</b></h6>
+      </div>
+      <div class="col-md-6">
+        <h6>Propietario</h6>
+        <h6>Hugo Enrique Castro Nieves</h6>
+        <h6>Paco de Lucia</h6>
+        <h6>Luis Perez Ardila</h6>
+      </div>
+    </div>
+</div> <!-- Fin md-6 -->
+
+<h4><b>INFORMACION GENERAL DEL PREDIO</b></h4>
+<div class="col-md-12" style="border:1px solid #DCDCDC; border-radius:5px;padding-left:0px;margin-bottom:10px"> <!-- md-12 -->
+    <div class="col-md-4">
+      <h6><b>Extencion: </b> 250 Hectareas</h6>
+      <h6><b>Area en arrendamiento: </b> 50 Hectareas</h6>
+      <h6><b>Tenencia: </b> 12 años</h6>
+      <h6><b>Habitantes: </b> 10</h6>
+    </div>
+    <div class="col-md-4">
+      <h6><b>Km a cabecera: </b> 2</h6>
+      <h6><b>Acesso: </b> Bueno</h6>
+      <h6><b>Medio transporte: </b> Carro</h6>
+      <h6><b>Acceso al predio: </b> Bueno</h6>
+    </div>
+    <div class="col-md-4">
+      <h6><b>Altitud(msnm): </b> 24,56</h6>
+      <h6><b>Precipitacion(mm): </b> 102,38</h6>
+      <h6><b>Utiliza sabanas comunales: </b> No</h6>
+    </div>
+</div> <!-- Fin md-12 -->
+<div class="col-md-12">
+  <h4 class="text-left"><b>INFORMACION ORGANIZACIONAL DEL PREDIO</b></h4>
+</div>
+<div class="col-md-12" style="padding:0px;border:1px solid #DCDCDC; border-radius:5px;"> <!-- md-12 -->
+  <div class="col-md-3">
+    <h5><b>INFORMACION</b></h5>
+    <legend></legend>
+    <h6><b>PROPIETARIO:</b></h6>
+    <h6><b>DDOCUMENTO:</b></h6>
+    <h6><b>FECHA NACIMIENTO:</b></h6>
+    <h6><b>E-MAIL:</b></h6>
+    <h6><b>DIRECCION RES.</b></h6>
+    <h6><b>TELEFONO</b></h6>
+  </div>
+  <div class="col-md-3"> <!-- md-3 -->
+    <h5><b>PROPIETARIO</b></h5>
+    <legend></legend>
+    <h6>Hugo Enrique Castro Nieves</h6>
+    <h6>94426735</h6>
+    <h6>09/08/65</h6>
+    <h6>hugoenriquecn@hotmail.com</h6>
+    <h6>Cra. 42C N°. 51-88</h6>
+    <h6>3162808288</h6>
+  </div> <!-- Fin md-3 -->
+  <div class="col-md-3"> <!-- md-3 -->
+    <h5><b>ADMINISTRADOR</b></h5>
+    <legend></legend>
+    <h6>Paco de Lucia Benavides</h6>
+    <h6>72903456</h6>
+    <h6>11/07/70</h6>
+    <h6>pacodelucia@hotmail.com</h6>
+    <h6>Cra. 42C N°. 51-88</h6>
+    <h6>3134693844</h6>
+  </div> <!-- Fin md-3 -->
+  <div class="col-md-3"> <!-- md-3 -->
+    <h5><b>ENCARGADO</b></h5>
+    <legend></legend>
+    <h6>Luis Antonio Ardila Castellanos</h6>
+    <h6>71564765</h6>
+    <h6>13/04/45</h6>
+    <h6>larcastellanos@hotmail.com</h6>
+    <h6>Cra. 42C N°. 51-88</h6>
+    <h6>3184935945</h6>
+  </div> <!-- Fin md-3 -->
+</div> <!-- Fin md-12 -->
+
+<div class="col-md-12">
+  <h4 class="text-left"><b>VIVIENDA E INFRAESTRUCTURA</b></h4>
+</div>
+<div class="col-md-12" style="padding:0px;border:1px solid #DCDCDC; border-radius:5px;"> <!-- md-12 -->
+  <div class="col-md-4"> <!-- md-4 -->
+    <h6><b>POSEE VIVIENDA: </b> Si</h6>
+    <h6><b>TIPO DE CUBIERTA: </b> Teja de barro</h6>
+    <h6><b>TIPO DE CONSTRUCCION: </b> Madera o esterilla</h6>
+    <h6><b>ESTADO DE SANEAMIENTO: </b> Bueno</h6>
+  </div> <!-- Fin md-4 -->
+  <div class="col-md-4"> <!-- md-4 -->
+    <h6><b>BATERIA SANITARIA: </b> Si</h6>
+    <h6><b>ENERGIA ELECTRICA: </b> Si</h6>
+    <h6><b>ENERGIA ALTERNATIVA: </b> Si</h6>
+    <h6><b>TIPO ENERGIA ALTERNATIVA: </b> Energia solar</h6>
+  </div> <!-- Fin md-4 -->
+  <div class="col-md-4"> <!-- md-4 -->
+    <h6 class="text-left"><b>FUENTE DE ENERGIA PARA LA PREPARACION DE ALIMENTOS: </b></h6>
+    <h6>Leña; Gas propano; Keroseno; Electricidad; Carbon; Estiercol seco; Energia solar; Gas metano(Biodigestor)</h6>
+  </div> <!-- Fin md-4 -->
+</div> <!-- Fin md-12 -->
+
+<div class="col-md-12">
+  <h4 class="text-left"><b>CREDITOS</b></h4>
+</div>
+<div class="col-md-12" style="padding:0px;border:1px solid #DCDCDC; border-radius:5px;"> <!-- md-12 -->
+  <div class="col-md-6"> <!-- md-6 -->
+    <h6><b>CANTIDAD DE CREDITOS: </b> 3</h6>
+    <h6><b>USO PRINCIPAL DEL CREDITO: </b> Compra de ganado</h6>
+    <h6><b>TIENE INGRESOS EXTERNOS: </b> Si</h6>
+  </div> <!-- Fin md-6 -->
+  <div class="col-md-6"> <!-- md-6 -->
+    <h6><b>POSEE ALGUN INCENTIVO: </b> 3</h6>
+    <h6><b>TIPO DE INCENTIVO: </b> Certificado de incentivo agroforestal</h6>
+  </div> <!-- Fin md-6 -->
+</div> <!-- Fin md-12 -->
+
+<div class="col-md-12" style="padding:0px;border:1px solid #DCDCDC; border-radius:5px;margin-top:20px"> <!-- md-12 -->
+  <div class="col-md-4"> <!-- md-4 -->
+    <h5><b>CREDITO N° 1</b></h5>
+    <legend></legend>
+    <h6><b>ORIGEN DEL CREDITO: </b> Banco Agrario</h6>
+    <h6><b>LUGAR DE EXPEDICION: </b> Arauca</h6>
+    <h6><b>PAGO O CUOTA: </b> $22.500.000.00</h6>
+    <h6><b>TIPO DE PAGO: </b> Semestral</h6>
+  </div> <!-- Fin md-4 -->
+  <div class="col-md-4"> <!-- md-4 -->
+    <h5><b>CREDITO N° 2</b></h5>
+    <legend></legend>
+    <h6><b>ORIGEN DEL CREDITO: </b> Banco Agrario</h6>
+    <h6><b>LUGAR DE EXPEDICION: </b> Arauca</h6>
+    <h6><b>PAGO O CUOTA: </b> $22.500.000.00</h6>
+    <h6><b>TIPO DE PAGO: </b> Semestral</h6>
+  </div> <!-- Fin md-4 -->
+  <div class="col-md-4"> <!-- md-4 -->
+    <h5><b>CREDITO N° 3</b></h5>
+    <legend></legend>
+    <h6><b>ORIGEN DEL CREDITO: </b> Banco Agrario</h6>
+    <h6><b>LUGAR DE EXPEDICION: </b> Arauca</h6>
+    <h6><b>PAGO O CUOTA: </b> $22.500.000.00</h6>
+    <h6><b>TIPO DE PAGO: </b> Semestral</h6>
+  </div> <!-- Fin md-4 -->
+</div> <!-- Fin md-12 -->
+
+<div class="col-md-12">
+  <h4 class="text-left"><b>FUENTES DE AGUA Y CONSERVACION</b></h4>
+</div>
+<div class="col-md-12" style="padding:0px;border:1px solid #DCDCDC; border-radius:5px;"> <!-- md-12 -->
+  <div class="col-md-5"> <!-- md-5 -->
+    <h5><b>VIVIENDA Y NACIMIENTOS</b></h5>
+    <legend></legend>
+    <h6><b>CORRIENTES DE AGUA PRESENTES: </b> 3</h6>
+    <h6><b>ZONAS NATURALES DE CONCENTRACION DE AGUA: </b> Si</h6>
+    <h6><b>PROTEJE CORRIENTES Y ZONAS NATURALES: </b> Si</h6>
+    <h6><b>FORMAS DE PROTECCION: </b> Proteccion con cerca electrica o alambre de pua</h6>
+  </div> <!-- md-5 -->
+  <div class="col-md-7"> <!-- md-7 -->
+    <h5><b>VIVIENDA Y USOS</b></h5>
+    <legend></legend>
+    <h6 class="tex-left"><b>AGUA DE USO DOMESTICO: </b> Laguna; Acueducto; Rio; Cañada; Lagos; Caños; Pozo profundo con filtrado; Pozo profundo sin filtrado</h6>
+    <h6 class="text-left"><b>SISTEMA DE SUCCION DE AGUA: </b> Motobomba; Electrobomba; Bomba manual</h6>
+    <h6 class="text-left"><b>AGUA PARA LA PRODUCCION: </b> Laguna; Acueducto; Rio; Cañada; Lagos; Caños; Pozo profundo con filtrado; Pozo profundo sin filtrado</h6>
+  </div> <!-- Fin md-7 -->
+</div> <!-- Fin md-12 -->
+
+<div class="col-md-12">
+  <h4 class="text-left"><b>USOS DEL SUELO</b></h4>
+</div>
+<div class="col-md-12" style="padding:0px;border:1px solid #DCDCDC; border-radius:5px;"> <!-- md-12 -->
+  <div class="col-md-5"> <!-- md-5 -->
+    <h5><b>ACTIVIDADES PECUARIAS</b></h5>
+    <legend></legend>
+    <div class="col-md-10">
+      <h6><b>Areas de pastoreo</b></h6>
+      <h6>Pasturas nativas sin arboles</h6>
+      <h6>Pasturas introducidas sin arboles</h6>
+      <h6><b>Sistemas silvopastoriles</b></h6>
+      <h6>SSPI</h6>
+      <h6>SSPI con maderables</h6>
+      <h6>Arboles dispersos en potreros</h6>
+      <h6>Franjas dobles de arboles en potreros</h6>
+      <h6>Cercas vivas</h6>
+      <h6>Pastoreo en plantanciones forestales</h6>
+      <h6><b>Bancos de forraje</b></h6>
+      <h6>Bancos de energia(Gramineas)</h6>
+      <h6>Bancos de proteina</h6>
+      <h6>Bancos mixtos</h6>
+      <h5><b>Total</b></h5>
+    </div>
+    <div class="col-md-1">
+      <h6><span class="glyphicon glyphicon-minus"></span></h6>
+      <h6>20</h6>
+      <h6>10</h6>
+      <h6><span class="glyphicon glyphicon-minus"></span></h6>
+      <h6>20</h6>
+      <h6>30</h6>
+      <h6>0</h6>
+      <h6>0</h6>
+      <h6>8</h6>
+      <h6>2</h6>
+      <h6><span class="glyphicon glyphicon-minus"></span></h6>
+      <h6>18</h6>
+      <h6>18</h6>
+      <h6>18</h6>
+      <h5><b>252</b></h5>
+    </div>
+  </div> <!-- Fin md-5 -->
+  <div class="col-md-3" style="padding:0px"> <!-- md-3 -->
+    <h5 class="text-left"><b>CULTIVOS AGRICOLAS</b></h5>
+    <legend></legend>
+    <div class="col-md-10">
+      <h6><b>Homogeneos</b></h6>
+      <h6>Maiz</h6>
+      <h6>Platano</h6>
+      <h6>Cafe</h6>
+      <h6>Yuca</h6>
+      <h6><b>Mixtos</b></h6>
+      <h6>Maiz con platano</h6>
+      <h6>Platano con cafe</h6>
+      <h6>Platano con cacao</h6>
+      <h6>Otro</h6>
+      <h5><b>Total</b></h5>
+    </div>
+    <div class="col-md-1">
+      <h6><span class="glyphicon glyphicon-minus"></span></h6>
+      <h6>20</h6>
+      <h6>0</h6>
+      <h6>0</h6>
+      <h6>0</h6>
+      <h6><span class="glyphicon glyphicon-minus"></span></h6>
+      <h6>5</h6>
+      <h6>15</h6>
+      <h6>15</h6>
+      <h6>10</h6>
+      <h5><b>140</b></h5>
+    </div>
+  </div> <!-- Fin md-3 -->
+  <div class="col-md-4"> <!-- md-4 -->
+    <h5 class="text-left"><b>PLANTACIONES FORESTALES</b></h5>
+    <legend></legend>
+    <div class="col-md-10">
+      <h6><b>Homogeneas</b></h6>
+      <h6>Eucalipto</h6>
+      <h6>Pino</h6>
+      <h6>Teca</h6>
+      <h6>Pino</h6>
+      <h6><b>Mixtas</b></h6>
+      <h6>Teca mas melina</h6>
+      <h6>Pardillo mas tolua</h6>
+      <h6>Otro/h6>
+      <h6>Otro</h6>
+      <h5><b>Total</b></h5>
+    </div>
+    <div class="col-md-1">
+      <h6><span class="glyphicon glyphicon-minus"></span></h6>
+      <h6>20</h6>
+      <h6>0</h6>
+      <h6>0</h6>
+      <h6>0</h6>
+      <h6><span class="glyphicon glyphicon-minus"></span></h6>
+      <h6>8</h6>
+      <h6>10</h6>
+      <h6>10</h6>
+      <h6>10</h6>
+      <h5><b>116</b></h5>
+    </div>
+  </div> <!-- Fin md-4 -->
+</div> <!-- Fin md-12 -->
+<div class="col-md-12" style="padding:0px;border:1px solid #DCDCDC; border-radius:5px;"> <!--md-12 -->
+  <div class="col-md-6"> <!--md-6 -->
+    <h5 class="text-left"><b>SISTEMAS AGROFORESTALES</b></h5>
+    <legend></legend>
+    <div class="col-md-10">
+      <h6>Eucalipto</h6>
+      <h6>Pino</h6>
+      <h6>Teca</h6>
+      <h6>Otro</h6>
+      <h5><b>Total</b></h5>
+    </div>
+    <div class="col-md-1">
+      <h6>20</h6>
+      <h6>0</h6>
+      <h6>0</h6>
+      <h6>0</h6>
+      <h5><b>20</b></h5>
+    </div>
+  </div> <!-- Fin md-6 -->
+  <div class="col-md-6"> <!--md-6 -->
+    <h5 class="text-left"><b>BOSQUES Y AREAS DE CONSERVACION</b></h5>
+    <legend></legend>
+    <div class="col-md-10">
+      <h6><b>Bosques</b></h6>
+      <h6>Bosques de galeria</h6>
+      <h6>Mata de monte</h6>
+      <h6><b>Zonas de conservacion</b></h6>
+      <h6>Areas en regeneracion natural</h6>
+      <h6>Morichal</h6>
+      <h5><b>Total</b></h5>
+    </div>
+    <div class="col-md-1">
+      <h6><span class="glyphicon glyphicon-minus"></span></h6>
+      <h6>20</h6>
+      <h6>0</h6>
+      <h6><span class="glyphicon glyphicon-minus"></span></h6>
+      <h6>8</h6>
+      <h6>20</h6>
+      <h5><b>96</b></h5>
+    </div>
+  </div> <!-- Fin md-6 -->
+</div> <!-- Fin md-12 -->
+
+<div class="col-md-12">
+  <h4 class="text-left"><b>INDICADORES ECONOMICOS DEL HATO - INVENTARIO ANIMAL</b></h4>
+</div>
+<div class="col-md-12" style="padding:0px;border:1px solid #DCDCDC; border-radius:5px;"> <!-- md-12 -->
+  <div class="col-md-4"> <!-- md-4 -->
+ <div class="col-md-9" style="margin-left:-20px">
+   <h5><b>Hembras</b></h5>
+   <legend></legend>
+   <h6>Vacas paridas</h6>
+   <h6>Vacas horras(Secas)</h6>
+   <h6>Hembras de 2 a 3 años</h6>
+   <h6>Hembras de 1 a 2 años</h6>
+   <h6>Hembras menores de 1 año</h6>
+   <h6>Animales de saca o descarte</h6>
+   <h5><b>Total</b></h5>
+ </div>
+ <div class="col-md-1" style="padding-left:0px">
+   <h5><b>Prop.</b></h5>
+   <legend></legend>
+   <h6>20</h6>
+   <h6>0</h6>
+   <h6>0</h6>
+   <h6>8</h6>
+   <h6>18</h6>
+   <h6>18</h6>
+ </div>
+ <div class="col-md-1">
+   <h5><b>Ajen</b></h5>
+   <legend></legend>
+   <h6>20</h6>
+   <h6>0</h6>
+   <h6>0</h6>
+   <h6>8</h6>
+   <h6>18</h6>
+   <h6>18</h6>
+ </div>
+ <div class="col-md-1">
+   <h5><b>Total</b></h5>
+   <legend></legend>
+   <h6>40</h6>
+   <h6>0</h6>
+   <h6>0</h6>
+   <h6>16</h6>
+   <h6>36</h6>
+   <h6>36</h6>
+   <h5><b>118</b></h5>
+ </div>
+</div> <!-- Fin md-4 -->
+
+<div class="col-md-4"> <!-- md-4 -->
+ <div class="col-md-9" style="margin-left:-20px">
+   <h5><b>Machos</b></h5>
+   <legend></legend>
+   <h6>Toros</h6>
+   <h6>Machos mayores a 3 años</h6>
+   <h6>Machos entre 2 a 3 años</h6>
+   <h6>Machos de 1 a 2 años</h6>
+   <h6>Machos menores de 1 año</h6>
+   <h6>Bueyes</h6>
+   <h6>Animales de saca o descarte</h6>
+   <h5><b>Total</b></h5>
+ </div>
+ <div class="col-md-1" style="padding-left:0px">
+   <h5><b>Prop.</b></h5>
+   <legend></legend>
+   <h6>20</h6>
+   <h6>0</h6>
+   <h6>0</h6>
+   <h6>8</h6>
+   <h6>18</h6>
+   <h6>18</h6>
+   <h6>8</h6>
+ </div>
+ <div class="col-md-1">
+   <h5><b>Ajen</b></h5>
+   <legend></legend>
+   <h6>20</h6>
+   <h6>0</h6>
+   <h6>0</h6>
+   <h6>8</h6>
+   <h6>18</h6>
+   <h6>18</h6>
+   <h6>8</h6>
+ </div>
+ <div class="col-md-1">
+   <h5><b>Total</b></h5>
+   <legend></legend>
+   <h6>40</h6>
+   <h6>0</h6>
+   <h6>0</h6>
+   <h6>16</h6>
+   <h6>36</h6>
+   <h6>36</h6>
+   <h6>16</h6>
+   <h5><b>56</b></h5>
+ </div>
+</div> <!-- Fin md-4 -->
+
+<div class="col-md-4"> <!-- md-4 -->
+ <div class="col-md-7" style="margin-left:-20px">
+   <h5><b>Otras especies</b></h5>
+   <legend></legend>
+   <h6>Caballares</h6>
+   <h6>Mulares</h6>
+   <h6>Porcinos</h6>
+   <h6>Aves</h6>
+   <h6>Ovinos</h6>
+   <h6>Caprinos</h6>
+   <h6>Peces</h6>
+   <h6>Bufalos</h6>
+   <h5><b>Total</b></h5>
+ </div>
+ <div class="col-md-1" style="padding-left:0px">
+   <h5><b>Prop.</b></h5>
+   <legend></legend>
+   <h6>20</h6>
+   <h6>0</h6>
+   <h6>0</h6>
+   <h6>8</h6>
+   <h6>18</h6>
+   <h6>18</h6>
+   <h6>0</h6>
+   <h6>8</h6>
+ </div>
+ <div class="col-md-2">
+   <h5><b>Ajen</b></h5>
+   <legend></legend>
+   <h6>20</h6>
+   <h6>0</h6>
+   <h6>0</h6>
+   <h6>8</h6>
+   <h6>18</h6>
+   <h6>18</h6>
+   <h6>0</h6>
+   <h6>8</h6>
+ </div>
+ <div class="col-md-2">
+   <h5><b>Total</b></h5>
+   <legend></legend>
+   <h6>40</h6>
+   <h6>0</h6>
+   <h6>0</h6>
+   <h6>16</h6>
+   <h6>36</h6>
+   <h6>36</h6>
+   <h6>0</h6>
+   <h6>16</h6>
+   <h5><b>64</b></h5>
+ </div>
+</div> <!-- Fin md-4 -->
+</div> <!-- md-12 -->
+
+<div class="col-md-12">
+  <h4 class="text-left"><b>INDICADORES ECONOMICOS DEL HATO - PARAMETROS PRODUCTIVOS</b></h4>
+</div>
+<div class="col-md-12" style="padding:0px;border:1px solid #DCDCDC; border-radius:5px;"> <!-- md-12 -->
+  <div class="col-md-4"> <!-- md-4 -->      
+      <div class="col-md-9" style="margin-left:-20px">
+        <h5><b>Doble proposito</b></h5>
+        <legend></legend>
+        <h6>Peso promedio vacas en produccion</h6>
+        <h6>Litro por vaca dia</h6>
+        <h6>Duracion de la lactancia</h6>
+        <h6>Dias abiertos</h6>
+        <h6>Peso de la cria al nacimiento</h6>
+      </div>
+      <div class="col-md-1">
+        <h5><b>Cnt.</b></h5>
+        <legend></legend>
+        <h6>20</h6>
+        <h6><br>0</h6>
+        <h6>0</h6>
+        <h6>8</h6>
+        <h6>18</h6>
+      </div>
+      <div class="col-md-1" style="margin-left:6px">
+        <h5><b>Unid.</b></h5>
+        <legend></legend>
+        <h6>Kg</h6>
+        <h6><br>Lts</h6>
+        <h6>Dia</h6>
+        <h6>Dia</h6>
+        <h6>Kg</h6>
+      </div>
+    </div><!-- fin md-4 -->
+    <div class="col-md-4"> <!-- md-4 -->
+      <div class="col-md-9" style="margin-left:-20px">
+        <h5><b>Levante</b></h5>
+        <legend></legend>
+        <h6>Peso al destete</h6>
+        <h6>Peso al final del levante</h6>
+        <h6>Edad promedio del levante</h6>
+        <h6>Peso al final del levante</h6>
+        <h6>Ganancia diaria de peso(GDP)</h6>
+        <h6>Tiempo promedio</h6>
+        <h6>Unidad gran ganado(UGG)</h6>
+      </div>
+      <div class="col-md-1">
+        <h5><b>Cnt.</b></h5>
+        <legend></legend>
+        <h6>20</h6>
+        <h6>0</h6>
+        <h6>0</h6>
+        <h6>8</h6>
+        <h6>18</h6>
+        <h6>18</h6>
+        <h6>18</h6>
+      </div>
+      <div class="col-md-1" style="margin-left:6px">
+        <h5><b>Unid.</b></h5>
+        <legend></legend>
+        <h6>Kg</h6>
+        <h6>Kg</h6>
+        <h6>Dia</h6>
+        <h6>Kg/Dia</h6>
+        <h6>Kg/Dia</h6>
+        <h6>Dia</h6>
+        <h6>UGG</h6>
+      </div>
+    </div> <!-- Fin md-4 -->
+    
+    <div class="col-md-4"> <!-- md-4 -->
+      <div class="col-md-9" style="margin-left:-20px">
+        <h5><b>Ceba</b></h5>
+        <legend></legend>
+        <h6>Peso al levante</h6>
+        <h6>Peso al final de la ceba</h6>
+        <h6>Edad promedio de la ceba</h6>
+        <h6>Ganancia diaria de peso(GDP)</h6>
+        <h6>Tiempo promedio de ceba</h6>
+        <h6>Edad de finalizacion ceba</h6>
+        <h6>Carga animal(UGG)</h6>
+        <h6>Produccion de forrajes</h6>
+      </div>
+      <div class="col-md-1">
+        <h5><b>Cnt.</b></h5>
+        <legend></legend>
+        <h6>20</h6>
+        <h6>0</h6>
+        <h6>0</h6>
+        <h6>8</h6>
+        <h6>18</h6>
+        <h6>18</h6>
+        <h6>18</h6>
+        <h6>18</h6>
+      </div>
+      <div class="col-md-1" style="margin-left:6px">
+        <h5><b>Unid.</b></h5>
+        <legend></legend>
+        <h6>Kg</h6>
+        <h6>Kg</h6>
+        <h6>Dia</h6>
+        <h6>Kg/Dia</h6>
+        <h6>Kg/Dia</h6>
+        <h6>Dia</h6>
+        <h6>UGG</h6>
+        <h6>UGG</h6>
+      </div>
+    </div> <!-- fin md-4 -->
+</div> <!-- Fin md-12 -->
+
+<div class="col-md-12">
+  <h4 class="text-left"><b>VENTA DE LACTEOS Y COSTOS</b></h4>
+</div>
+<div class="col-md-12" style="padding:0px;border:1px solid #DCDCDC; border-radius:5px;"> <!--md-12 -->
+  <div class="col-md-4"> <!-- md-4 -->
+    <div class="col-md-10" style="margin-left:-20px">
+      <h5><b>Produccion de leche</b></h5>
+      <legend></legend>
+      <h6>Total producido por litro dia</h6>
+      <h6>Cantidad destinada a productos lacteos</h6>
+      <h6>Cantidad destinada autoconsumo x dia</h6>
+      <h6>Precio por litro de leche</h6>
+      <h6>Promedio de vacas ordeñadas por dia</h6>
+    </div>
+    <div class="col-md-1" style="padding-left:0px">
+      <h5><b>Cnt.</b></h5>
+      <legend></legend>
+      <h6>20</h6>
+      <h6>0</h6>
+      <h6><br>0</h6>
+      <h6><br>8</h6>
+      <h6>18</h6>
+    </div>
+    <div class="col-md-1">
+      <h5><b>Unid.</b></h5>
+      <legend></legend>
+      <h6>Lts</h6>
+      <h6>Lts</h6>
+      <h6><br>Lts/Dia</h6>
+      <h6><br>$</h6>
+      <h6>Cant/Dia</h6>
+    </div>
+  </div> <!-- fin md-4 -->
+  <div class="col-md-4"> <!-- md-4 -->
+    <div class="col-md-10" style="margin-left:-20px">
+      <h5><b>Produccion queso</b></h5>
+      <legend></legend>
+      <h6>Queso de mano</h6>
+      <h6>Queso cuajada</h6>
+      <h6>Queso prensado</h6>
+      <h6>Queso madurado</h6>
+    </div>
+    <div class="col-md-1" style="padding-left:0px">
+      <h5><b>Cnt.</b></h5>
+      <legend></legend>
+      <h6>20</h6>
+      <h6>0</h6>
+      <h6>0</h6>
+      <h6>8</h6>
+    </div>
+    <div class="col-md-1">
+      <h5><b>Unid.</b></h5>
+      <legend></legend>
+      <h6>Kg</h6>
+      <h6>Kg</h6>
+      <h6>Kg</h6>
+      <h6>Kg</h6>
+    </div>
+  </div> <!-- fin md-4 -->
+  <div class="col-md-4"> <!-- md-4 -->
+    <div class="col-md-10" style="margin-left:-20px">
+      <h5><b>Otros derivados</b></h5>
+      <legend></legend>
+      <h6>Mantequilla</h6>
+      <h6>Yogurth</h6>
+      <h6>Kumis</h6>
+      <h6>Dulces(Arequime, cortado,etc)</h6>
+    </div>
+    <div class="col-md-1" style="padding-left:0px">
+      <h5><b>Cnt.</b></h5>
+      <legend></legend>
+      <h6>20</h6>
+      <h6>0</h6>
+      <h6>0</h6>
+      <h6>8</h6>
+    </div>
+    <div class="col-md-1">
+      <h5><b>Unid.</b></h5>
+      <legend></legend>
+      <h6>Kg</h6>
+      <h6>Kg</h6>
+      <h6>Kg</h6>
+      <h6>Kg</h6>
+    </div>
+  </div> <!-- fin md-4 -->
+</div> <!-- Fin md-12 -->
+
+  </div> <!-- Fin Panel -->
+</div>
+  
+
+
+  </div><!--col-md-9-->
+
+</div><!--row-->
+
+
+
+
+</div><!--fluid-->
+
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.js"></script>
+</body>
+
+</html>r

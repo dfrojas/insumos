@@ -1,71 +1,43 @@
 from django.db import models
 from predio.models import *
+from opciones.models import *
 
 class Persona(models.Model):
-	TIPO_IDENTIFICACION = (
-		('CC','Cedula Ciudadania'),
-		('NIT','NIT'),
-	)
-	GENERO = (
-		('M','Masculino'),
-		('F','Femenino'),
-	)
-
-	ESTADO_CIVIL = (
-		('Soltero','Soltero'),
-		('Casado','Casado'),
-		('Union Libre','Union Libre'),
-	)
-	tipo_identificacion = models.CharField(max_length=5,choices=TIPO_IDENTIFICACION)
-	numero_identificacion = models.CharField(max_length=20)
-	primer_nombre = models.CharField(max_length=30)
-	segundo_nombre = models.CharField(max_length=30)
-	primer_apellido = models.CharField(max_length=30)
-	segundo_apellido = models. CharField(max_length=30)
-	genero = models.CharField(max_length=1,choices=GENERO)
-	fecha_nacimiento = models.DateField(max_length=10)
-	lugar_nacimiento = models.CharField(max_length=30)
-	email = models.EmailField(max_length=50)
-	telefono = models.CharField(max_length=15)
-	direccion_residencia = models.CharField(max_length=50)
-	estad_civil = models.CharField(max_length=50,choices=ESTADO_CIVIL)
-	regimen_salud = models.CharField(max_length=30)
-	sisben = models.CharField(max_length=10)
-	extranjero = models.BooleanField(default=False)
+	predio = models.ForeignKey(InfoPredioGeneral,related_name='predio+')
+	rol = models.ManyToManyField(RolPersona)
+	tipo_identificacion = models.ForeignKey(TipoIdentificacion,related_name='tipo identificacion+',blank=True,null=True)
+	numero_identificacion = models.CharField(max_length=100,blank=True,null=True)
+	primer_nombre = models.CharField(max_length=100)
+	segundo_nombre = models.CharField(max_length=100,blank=True,null=True)
+	primer_apellido = models.CharField(max_length=100,blank=True,null=True)
+	segundo_apellido = models.CharField(max_length=100,blank=True,null=True)
+	email = models.EmailField(max_length=100,blank=True,null=True)
+	telefono = models.CharField(max_length=100,blank=True,null=True)
+	fecha_nacimiento = models.DateField(blank=True,null=True)
+	lugar_nacimiento = models.CharField(max_length=100,blank=True,null=True)
+	direccion_residencia = models.CharField(max_length=100,blank=True,null=True)
+	estado_civil = models.ForeignKey(EstadoCivil,related_name='estado civil+',blank=True,null=True)
+	regimen_salud = models.ForeignKey(RegimenSalud,related_name='regimen salud+',blank=True,null=True)
+	sisben = models.ForeignKey(Sisben,related_name='sisben+',blank=True,null=True)
+	extranjero = models.ForeignKey(Booleanos,related_name='extranjero+',blank=True,null=True)
+	genero = models.ForeignKey(Genero,related_name='genero+',blank=True,null=True)
 
 	def __str__(self):
 		return self.primer_nombre
 
-class Rol(models.Model):
-	nombre = models.CharField(max_length=100)
 
-	def __str__(self):
-		return self.nombre
-
-
-class RelacionPredioPersona(models.Model):
-	predio = models.ForeignKey(Predio)
-	persona = models.ForeignKey(Persona,related_name='persona')
-	rol = models.ForeignKey(Rol,related_name='rol')
-
-	def __str__(self):
-		return self.predio.nombre
-
-class Habitantes(models.Model):
-	predio = models.ForeignKey(Predio)
+class Habitante(models.Model):
+	predio = models.ForeignKey(InfoPredioGeneral)
 	cantidad_ninos = models.IntegerField()
 	cantidad_ninas = models.IntegerField()
-	cantidad_adulto_masculino = models.IntegerField()
-	cantidad_adulto_femenino = models.IntegerField()
+	cantidad_adultos_masculino = models.IntegerField()
+	cantidad_adultos_femenino = models.IntegerField()
 	cantidad_adultos_mayores_masculino = models.IntegerField()
 	cantidad_adultos_mayores_femenino = models.IntegerField()
-	totalninos = models.IntegerField()
-	total_adultos = models.IntegerField()
-	total_adultos_mayores = models.IntegerField()
+	total_ninos = models.IntegerField(blank=True,null=True)
+	total_adultos = models.IntegerField(blank=True,null=True)
+	total_adultos_mayores = models.IntegerField(blank=True,null=True)
 
 	def __str__(self):
-		return self.predio.nombre
-
-
-
+		return self.predio.nombre_predio
 

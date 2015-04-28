@@ -1,0 +1,36 @@
+{% extends './base-edit.html' %}
+
+{% block js %}
+
+<script> 
+  $(function () {
+$("#myTab a:contains('Opciones de Administracion')").parent().addClass('active'); 
+
+  }); 
+$(document).ready(function() {
+  $('#form').ajaxForm(function() {
+    alert("Formulario guardado exitosamente");
+    $("#form").remove();
+  }); 
+});
+
+  
+</script>
+{% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/update/propietario/{{object.predio_id}}">Propietario</a></li>
+  <li role="presentation"><a href="/update/administrador/{{object.predio_id}}">Propietario y administrador</a></li>
+  <li role="presentation" class="active"><a href="#">Propietario, administrador y encargado</a></li>
+  <li role="presentation"><a href="/update/habitantes/{{object.predio_id}}">Habitantes del predio</a></li>
+</ul>
+
+</br>
+
+<form action="." method="POST" id="form">{% csrf_token %}
+{{form.as_p}}
+<p><input type="submit" value="Guardar"></p>
+</form>
+{% endblock %}

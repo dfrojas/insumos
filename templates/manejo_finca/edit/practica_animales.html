@@ -1,0 +1,51 @@
+{% extends './base-edit.html' %}
+
+{% block js %}
+
+<script> 
+  $(function () {
+        $("#myTab a:contains('Manejo general de la finca')").parent().addClass('active');        
+     });
+
+$(document).ready(function() {
+  $('#form').ajaxForm(function() {
+    alert("Formulario guardado exitosamente");
+    $("#form").remove();
+  }); 
+});
+
+  
+</script>
+{% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/update/manejo-finca/manejo-general/{{object.predio_id}}">Manejo general y potreros </a></li>
+  <li role="presentation" class="active"><a href="#">Enfermedades y problemas sanitarios </a></li>
+</ul>
+
+</br>
+
+
+<div class="row">
+  
+  <div class="col-md-6">
+  <form action="." method="POST" id="form">{% csrf_token %}
+    {{form.as_p}}
+    <p><input type="submit" value="Guardar"></p>
+  </form>
+  </div>
+
+</div>
+
+<nav>
+  <ul class="pager">
+    <li class="previous"><a href="/update/manejo-finca/enfermedades/{{object.predio_id}}"><span aria-hidden="true">&larr;</span> Enfermedades</a></li>
+    <li class="next"><a href="/update/manejo-finca/vacunas/{{object.predio_id}}">Vacunas <span aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+</nav>
+
+
+
+{% endblock %}

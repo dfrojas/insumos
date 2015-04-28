@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reportes</title>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var table = $('#tabla').DataTable( {
+        responsive: true,
+        paging: false
+    } );
+ 
+    new $.fn.dataTable.FixedHeader( table );
+   } );
+ </script> 
+
+
+</head>
+<body>
+	
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <img alt="Brand" src="http://imageshack.com/a/img538/8439/N3lBTg.png" width="50px">
+    <p class="navbar-text navbar-right">{{user.username}}</a></p>
+    <p class="navbar-text navbar-right"><a href="/edit">Editar</a></p>
+    <p class="navbar-text navbar-right"><a href="/edit">Reportes</a></p>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+
+<div class="row">
+  <div class="col-md-3">
+  	
+<div class="panel panel-default">
+  <div class="panel-heading">Reportes</div>
+  <div class="panel-body">
+    
+<form action="." method="POST">
+{% for predio in predios %}
+<p><a href="/reportes/{{object.id}}">{{predio.nombre_predio}}</a></p>
+{% endfor %}
+</form>
+
+
+  </div>
+</div>
+  </div><!--col-md-4-->
+  
+  <div class="col-md-9">
+  	
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    
+
+<div class="table-responsive">
+<table class="table table-bordered" id="tabla">
+    <thead>
+    <tr>
+    	<th>ID</th>
+        <th>Nombre Finca</th>
+        <th>Extension</th>
+        <th>Tenencia</th>   
+        <th>Ver reporte</th>    
+    </tr>
+    </thead>
+    <tbody>
+        {% for p in object_list %}
+        <tr>
+            <th scope="row">{{ p.pk }}</th>
+            <td>{{p.nombre_predio}}</td>
+            <td>{{p.ext_total}}</td>
+            <td>{{p.tenencia_finca}}</td>
+
+<td><div align="center"><a class="btn" href="/reporte/{{p.id}}/"><i class="icon-pencil"></i>  Ver </a></div></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+  </div>
+</div>
+
+  </div><!--col-md-12-->
+
+</div><!--row-->
+
+
+
+
+</div><!--fluid-->
+
+
+
+</body>
+</html>

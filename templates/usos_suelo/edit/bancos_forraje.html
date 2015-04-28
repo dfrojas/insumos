@@ -1,0 +1,46 @@
+{% extends './base-edit.html' %}
+
+{% block js %}
+
+<script> 
+  $(function () {
+        $("#myTab a:contains('Usos del suelo')").parent().addClass('active');        
+});
+
+$(document).ready(function() {
+  $('#form').ajaxForm(function() {
+    alert("Formulario guardado exitosamente");
+    $("#form").remove();
+  }); 
+});
+
+  
+</script>
+{% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="/update/pastoreo/{{object.predio_id}}">Actividades Pecuarias </a></li>
+  <li role="presentation"><a href="/update/cultivos-agricolas/{{object.predio_id}}">Actividades agricolas y forestales </a></li>
+  <!--<li role="presentation"><a href="/usossuelo/conservacion-natural/">Bosques, areas de conservacion y sistemas agroforestales </a></li>-->
+</ul>
+
+</br>
+  
+  <form action="." method="POST" id="form">{% csrf_token %}
+    {{form.as_p}}
+    <p><input type="submit" value="Guardar"></p>
+  </form>
+  
+<nav>
+  <ul class="pager">
+    <li class="previous"><a href="/update/pastoreo/{{object.predio_id}}"><span aria-hidden="true">&larr;</span> Pastoreo</a></li>
+    <!--<li class="next"><a href="/usossuelo/bancos-forraje/">Bancos forraje <span aria-hidden="true">&rarr;</span></a></li>-->
+  </ul>
+</nav>
+
+
+</div>
+
+{% endblock %}
